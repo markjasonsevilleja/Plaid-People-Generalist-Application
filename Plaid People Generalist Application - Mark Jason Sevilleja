@@ -1,0 +1,23 @@
+import requests
+import json
+
+url = "https://contact.plaid.com/jobs"
+
+data = {
+    "name": "Mark Jason Sevilleja",
+    "email": "markjasonsevilleja@gmail.com",
+    "resume": "https://drive.google.com/file/d/1AmZcXdarcOyMXk6SIo_GX8bSJUQFvY4E/view?usp=sharing",
+    "website": "https://www.linkedin.com/in/mark-jason-sevilleja-0b625099/",
+    "location": "Honolulu, HI",
+    "favorite candy": "Hershey's Cookies 'n' Creme",
+    "superpower": "Empathic Listening"
+}
+data = json.dumps(data)
+
+headers = {'Content-type': 'application/json', 'Accept': 'text/plain'}
+
+http_post_request = requests.post(url=url, data=data, headers=headers)
+
+server_response = http_post_request.text
+
+print(server_response)
